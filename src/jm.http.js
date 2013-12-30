@@ -29,6 +29,15 @@ J.$package(function(J){
 
 
     var http = {
+        /**
+         * 生成参数串
+         * 
+         * @name serializeParam
+         * @function
+         * @memberOf J.http
+         * @param {Object} param 参数对象
+         * @return {string} 生成的参数串
+         */  
         serializeParam : function ( param ) {
             if ( !param ) return '';
             var qstr = [];
@@ -37,6 +46,17 @@ J.$package(function(J){
             };
             return  qstr.join('&');
         },
+        /**
+         * 获取url参数值
+         * 
+         * @name getUrlParam
+         * @function
+         * @memberOf J.http
+         * @param {string} name 参数名
+         * @param {string} href url地址
+         * @param {Object} noDecode 禁用decode
+         * @return {string} 参数值
+         */ 
         getUrlParam :  function ( name ,href ,noDecode ) {
             var re = new RegExp( '(?:\\?|#|&)' + name + '=([^&]*)(?:$|&|#)',  'i' ), m = re.exec( href );
             var ret = m ? m[1] : '' ;
@@ -106,15 +126,15 @@ J.$package(function(J){
             }
 
             return xhr;
-        },
-        offlineSend:function(options){
-            if(navigator.onLine){
-                http.ajax(options);
-            }
-            else{
-                saveDataLocal(options);        
-            }
         }
+        // offlineSend:function(options){
+        //     if(navigator.onLine){
+        //         http.ajax(options);
+        //     }
+        //     else{
+        //         saveDataLocal(options);        
+        //     }
+        // }
     }
     J.http = http;
 });

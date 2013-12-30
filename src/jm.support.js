@@ -6,6 +6,14 @@ J.$package(function(J){
         $D = J.dom,
         $E = J.event;
     var support = {
+        /**
+         * 判断是否支持fixed
+         * 
+         * @name fixed
+         * @function
+         * @memberOf J.support
+         * @return {boolean} 是否支持fixed
+         */  
         fixed:(function(){
             var container = document.body;
             var el = $D.node('div');                
@@ -31,8 +39,14 @@ J.$package(function(J){
             container.scrollTop = originalScrollTop;
             return elementTop === 100;
         })(),
-        // 如果支持 `transitionend` 事件返回真正的事件名，如果不支持，返回布尔值 `false`
-        // 检测结果可能需要异步进行，所以不要缓存此检测结果，每次需要用到此事件时再访问
+        /**
+         * 判断是否支持transitionend并返回可用事件名
+         * 
+         * @name transitionend
+         * @function
+         * @memberOf J.support
+         * @return {string} 可用事件名
+         */  
         transitionend: (function(){
             var ret, endEventNames, div, handler, i;
 
@@ -91,9 +105,14 @@ J.$package(function(J){
             }
             return false;
         })(),
-        // 如果支持 `audio` 标签，返回一个对象，其属性有ogg, mp3, wav, m4a，表示这些格式的支持情况。
-        // 可能的属性值有 `"", "maybe", "probably"` ，
-        // 分别表示不支持，可能支持，很可能支持
+        /**
+         * 判断支持的audio格式列表
+         * 
+         * @name audio
+         * @function
+         * @memberOf J.support
+         * @return {Object} 可用audio格式列表
+         */  
         audio: (function(){
             var elem = document.createElement('audio'),
                 result,
@@ -113,7 +132,14 @@ J.$package(function(J){
 
             return result;
         })(),
-        // 是否安装了flash插件
+        /**
+         * 判断是否安装了flash插件
+         * 
+         * @name flash
+         * @function
+         * @memberOf J.support
+         * @return {boolean} 是否安装了flash插件
+         */  
         flash: (function() {
             if(nav.plugins && nav.plugins.length && nav.plugins['Shockwave Flash']){
                 return true;
