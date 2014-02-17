@@ -1,6 +1,6 @@
 //cookie
 J.$package(function(J){
-    var domainPrefix = window.location.host;
+    var domainPrefix = window.location.hostname;
     var cookie = {
         set : function(name, value, domain, path, hour) {
             if (hour) {
