@@ -2,7 +2,7 @@ JM
 ==
 > 面向Mobile的极致JavaScript库
 
-## 模块 & API ##
+## 模块 & API
 - Core
  - $()
  - $.fn()
