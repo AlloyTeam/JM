@@ -31,10 +31,10 @@ define(function () {
     // @see https://github.com/AlloyTeam/Mars/blob/master/tools/es5-mobile-compat-table.md
     JM.fn = JM.prototype = Object.create(Array.prototype, {
         // 版本值，通过构建工具替换
-        version:  { writable: false, configurable: false, value: "@VERSION" },
+        version:  { writable: false, value: "@VERSION" },
 
         // 初始选择器
-        selector: { writable: true, configurable: false, value: "" }
+        selector: { writable: true, value: "" }
     });
 
     $ = JM;
