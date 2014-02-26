@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JM Tests</title>
+    <link rel="stylesheet" href="http://visionmedia.github.io/mocha/example/mocha.css">
+</head>
+<body>
+<div id="mocha"></div>
+<script src="http://visionmedia.github.io/mocha/example/mocha.js"></script>
+<script src="http://visionmedia.github.io/mocha/example/chai.js"></script>
+<script>
+    mocha.setup('bdd');
+    expect = chai.expect;
+</script>
+<script data-main="./runner" src="http://requirejs.org/docs/release/2.1.11/comments/require.js"></script>
+</body>
+</html>
