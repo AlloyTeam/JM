@@ -2,30 +2,37 @@ JM
 ==
 > 面向Mobile的极致JavaScript库
 
-## 模块 & API
+## 模块
 - Core
  - $()
- - $.fn()
- - $.extend()
+ - .version
+ - .selector
+ - .context
+
+- Lang
+ - $.type()
+ - $.isFunction()
+ - $.isArray()
+ - $.isPlainObject()
+
 - DOM
- - $()
  - html()
  - text()
  - append()
  - appendTo()
  - empty()
+
 - Ajax
  - $.ajax()
  - $.get()
  - $.post()
  - $.getJSON()
  - $.jsonp()
+
 - Event
  - on()
  - off()
-- String
- - trim()
- - $.parseJSON()
+
 - Style
  - css()
  - hasClass()
@@ -35,20 +42,21 @@ JM
  - hide()
  - height()
  - width()
+ - offset()
+
 - Attributes
  - attr()
  - data()
+
 - Environment
  - $.browser
  - $.os
+
 - Cookie
  - $.getCookie()
  - $.setCookie()
  - $.removeCookie()
-- Utils
+
 - Touch
-- Animation
- - animate()
-- Gesture
- - hold()
+ - tap()
  - swipe()
