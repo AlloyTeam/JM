@@ -248,38 +248,38 @@ J.$package(function(J){
          * function(param, target, event){
          * }
          */
-        bindCommands : function(targetElement, eventName, commends, commendName){
+        bindCommands : function(targetElement, eventName, commands, commandName){
             var defaultEvent = J.platform.touchDevice ? "tap":"click";
             if(arguments.length === 1){
-                commends = targetElement;
+                commands = targetElement;
                 targetElement = document.body;
                 eventName = defaultEvent;
             }else if(arguments.length === 2){
-                commends = eventName;
+                commands = eventName;
                 eventName = defaultEvent;
             }
-            if(!targetElement._commends){
-                targetElement._commends = {};
+            if(!targetElement._commands){
+                targetElement._commands = {};
             }
-            if(targetElement._commends[eventName]){//已经有commends 就合并
-                J.extend(targetElement._commends[eventName], commends);
+            if(targetElement._commands[eventName]){//已经有commands 就合并
+                J.extend(targetElement._commands[eventName], commands);
                 return;
             }
-            targetElement._commends[eventName] = commends;
-            commendName = commendName || 'cmd';
-            if(!targetElement.getAttribute(commendName)){
-                targetElement.setAttribute(commendName, 'void');
+            targetElement._commands[eventName] = commands;
+            commandName = commandName || 'cmd';
+            if(!targetElement.getAttribute(commandName)){
+                targetElement.setAttribute(commandName, 'void');
             }
             J.event.on(targetElement, eventName, function(e){
-                var target = J.event.getActionTarget(e, -1, commendName, this.parentNode);
+                var target = J.event.getActionTarget(e, -1, commandName, this.parentNode);
                 if(target){
-                    var cmd = target.getAttribute(commendName);
+                    var cmd = target.getAttribute(commandName);
                     var param = target.getAttribute('param');
                     if(target.href && target.getAttribute('href').indexOf('#') === 0){
                         e.preventDefault();
                     }
-                    if(this._commends[eventName][cmd]){
-                        this._commends[eventName][cmd](param, target, e);
+                    if(this._commands[eventName][cmd]){
+                        this._commands[eventName][cmd](param, target, e);
                     }
                 }
             });
