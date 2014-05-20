@@ -573,7 +573,7 @@ J.$package(function(J){
                         target:e.target,
                         type:"transform",
                         scale:scale,
-                        rotate:rotation
+                        rotate:rotate
                     });
                 }
             }
