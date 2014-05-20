@@ -484,9 +484,7 @@ J.$package(function(J){
             var pt_up_pos;
             //获取swipe的方向
             var getSwipeDirection = function(p2,p1){
-                var dx = p2.x - p1.x;
-                var dy = -p2.y + p1.y;    
-                var angle = Math.atan2(dy , dx) * 180 / Math.PI;
+                var angle = getAngle(p1, p2);
 
                 if(angle < 45 && angle > -45) return "right";
                 if(angle >= 45 && angle < 135) return "top";
