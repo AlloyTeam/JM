@@ -19,6 +19,7 @@
         root.Deferred = factory();
     }
 })(this, function() {
+    
     /**
      * 延迟对象，用来解决异步回调方法嵌套
      * 
@@ -80,11 +81,12 @@
         var self = this;
         return {
             promise : true,
-            
+
             /**
-             * 返回一个延迟对象的承诺，包括then，done，done，供调用者调用，只能通过Deferred.promise来获取
-             * @param {} 
-             * @return {} 
+             * 当前延迟对象为已经完成或者已经拒绝时调用支持链式调用
+             * @param {function} onResolve当延迟对象完成时调用的回调
+             * @param {function} onReject当延迟对象拒绝时调用的回调
+             * @return {Promise} 新的Deferred对象的promise
              *
              */
 
@@ -97,12 +99,28 @@
                 });
                 return newPro.promise();
             },
+
+            /**
+             * 当前延迟对象为已经完成时调用
+             * @param {function} onDone当延迟对象完成时调用的回调
+             * @return {Promise} 当前的Deferred对象的promise
+             *
+             */
+
             done : function(onDone){
                 self.handler({
                     onResolve: onDone
                 });
                 return self.promise();
             },
+
+            /**
+             * 当前延迟对象为已经拒绝时调用
+             * @param {function} onFail当延迟对象完成时调用的回调
+             * @return {Promise} 当前的Deferred对象的promise
+             *
+             */
+
             fail : function(onFail){
                 self.handler({
                     onReject: onFail
@@ -114,6 +132,16 @@
     
     };
     
+    /**
+     * 延迟对象处理所有方法的handler
+     * @param {object} handler
+     * @param {handler} onResolve 当延迟对象已经完成时调用
+     * @param {handler} onReject 当延迟对象已经拒绝时调用
+     * @param {handler} newPro 新的延迟对象的promise
+     * @return {} 
+     *
+     */
+
     Deferred.prototype.handler = function(handler) {
         if (this.state === 'pending') {
             this.deferred.push(handler);
@@ -137,14 +165,35 @@
 
     };
 
-    Deferred.prototype.isReject = function(handler) {
+    /**
+     * 返回当前的延迟对象是否为已经拒绝
+     * @param {} 
+     * @return {} 
+     *
+     */
+
+    Deferred.prototype.isReject = function() {
         return this.state === 'reject' ? true : false;
     };
 
-    Deferred.prototype.isResolve = function(handler) {
+    /**
+     * 返回当前的延迟对象是否为已经完成
+     * @param {} 
+     * @return {} 
+     *
+     */
+
+    Deferred.prototype.isResolve = function() {
         return this.state === 'resolve' ? true : false;
     };
     
+    /**
+     * 标记当前对象为已经拒绝，state为reject，只能通过Deferred调用，外部Promise无法调用
+     * @param {} 
+     * @return {} 
+     *
+     */
+
     Deferred.prototype.reject = function(newValue) {
         this.rejectValue = newValue;
         this.state = 'reject';
