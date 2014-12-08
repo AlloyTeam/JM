@@ -11,6 +11,7 @@ tmp/
 *.bak
 *.swp
 *~.nib
+*/node_modules
 local.properties
 .classpath
 .settings/

@@ -1,0 +1,21 @@
+<h1 id="overview"><%= cov.instrumentation %></h1>
+<div id="stats">
+  <div class="linecoverage">
+    <span class="linecov <%= coverageClass(cov.lineCoverage) %>">
+      [<%= cov.lineCoverage %>%]
+    </span>
+    <span><%= cov.lineHits %>/<%= cov.lineSloc %><span>
+    <span class="misses">
+      <%= cov.lineMisses %>
+    </span>
+  </div>
+  <div class="branchcoverage">
+    <span class="branchcov <%= coverageClass(cov.lineCoverage) %>">
+      [<%= cov.branchCoverage %>%]
+    </span>
+    <span><%= cov.branchHits %>/<%= cov.branchSloc %></span>
+    <span class="misses">
+      <%= cov.branchMisses %>
+    </span>
+  </div>
+</div>

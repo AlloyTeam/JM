@@ -1,0 +1,37 @@
+{
+  "name": "localcache",
+  "version": "1.0.0",
+  "description": "",
+  "main": "storage.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "colors": "^1.0.3",
+    "coveralls": "^2.11.2",
+    "ejs": "^1.0.0",
+    "express": "^4.10.4",
+    "jscoverage": "^0.5.9",
+    "localStorage": "^1.0.3",
+    "mocha": "^2.0.1",
+    "node-localstorage": "^0.3.4"
+  },
+  "scripts": {
+    "test": "npm install && node ./test/server",
+    "coverage": "jscoverage storage.js test/tmp/storage.js && mocha -r jscoverage --check-leaks -R spec --covout=html test/coverage.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danyan/localcache.git"
+  },
+  "keywords": [
+    "localstorage",
+    "localcache"
+  ],
+  "author": "danyan",
+  "bugs": {
+    "url": "https://github.com/danyan/localcache/issues"
+  },
+  "homepage": "https://github.com/danyan/localcache"
+}

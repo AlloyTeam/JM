@@ -1,0 +1,64 @@
+<div class="file">
+  <h2 id="<%- file.filename %>"> <%- file.filename %></h2>
+  <div id="stats">
+    <div class="linecoverage">
+      <span class="linecov <%= coverageClass(file.lineCoverage) %>">
+        [<%= formatCoverage(file.lineCoverage) %>]
+      </span>
+      <span><%= file.lineHits %>/<%= file.lineSloc %><span>
+      <span class="misses">
+        <%= file.lineMisses %>
+      </span>
+    </div>
+    <div class="branchcoverage">
+      <span class="branchcov <%= coverageClass(file.lineCoverage) %>">
+        [<%= formatCoverage(file.branchCoverage) %>]
+      </span>
+      <span><%= file.branchHits %>/<%= file.branchSloc %></span>
+      <span class="misses">
+        <%= file.branchMisses %>
+      </span>
+    </div>
+  </div>
+  <table id="source">
+    <thead>
+      <tr>
+        <th>Line</th>
+        <th>Hits</th>
+        <th>Source</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% var number; %>
+      <% var line; %>
+      <% for (number = 1; number < file.source.length; number ++) { %>
+        <% line = file.source[number];%>
+        <% if (line.branches) { %>
+            <tr class="miss-branch">
+              <td class="line"><%- number %></td>
+              <td class="hits"><%- line.coverage %></td>
+              <td class="source"><%- line.source %></td>
+            </tr>
+        <% } else if (line.coverage > 0) { %>
+            <tr class="hit">
+              <td class="line"><%- number %></td>
+              <td class="hits"><%- line.coverage %></td>
+              <td class="source"><%- line.source %></td>
+            </tr>
+        <% } else if (0 === line.coverage) { %>
+            <tr class="miss">
+              <td class="line"><%- number %></td>
+              <td class="hits">0</td>
+              <td class="source"><%- line.source %></td>
+            </tr>
+        <% } else { %>
+            <tr>
+              <td class="line"><%- number %></td>
+              <td class="hits"></td>
+              <td class="source"><%- line.source %></td>
+            </tr>
+        <% } %>
+      <% } %>
+    </tbody>
+  </table>
+</div>
