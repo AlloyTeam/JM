@@ -1,5 +1,5 @@
 /**
- * CookieUtil
+ * Deferred
  * @path: JM/src/deferred.js
  * @version: 1.0.0
  * @author tennylv
