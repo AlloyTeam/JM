@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LocalCache Test Runner</title>
+    <link rel="stylesheet" href="browser/mocha.css" />
+    <script src="browser/jquery.js"></script>
+    <script src="browser/chai.js"></script>
+    <script src="mocha.js"></script>
+    <script>
+        mocha.setup('bdd')
+        function assert(expr, msg) {
+            if (!expr) throw new Error(msg || 'failed');
+        }
+        var assert = chai.assert;
+    </script>
+    <script>
+        var bigContent = "<%- overflowImage %>"
+    </script>
+    <script src="../storage.js"></script>
+    <script src="spec.js"></script>
+    <script>
+        for(var len = localStorage.length; len--;) {
+            var key = localStorage.key(len);
+            localStorage.removeItem(key);
+        }
+        window.onload = function () {
+            var runner = mocha.run();
+        }
+    </script>
+</head>
+<body>
+    <div id="mocha"></div>
+</body>
+</html>
