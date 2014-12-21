@@ -187,7 +187,7 @@
         }
     };
 
-    return Lacation;
+    return Location;
     
 });
 
