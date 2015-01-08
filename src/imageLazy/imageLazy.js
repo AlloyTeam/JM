@@ -1,5 +1,5 @@
 /**
- * ImageLazy
+ * ImageLazy依赖zepto
  * @path: JM/src/imageLazy.js
  * @version: 1.0.0
  * @author tennylv
